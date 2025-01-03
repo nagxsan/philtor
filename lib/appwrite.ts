@@ -22,7 +22,7 @@ export async function login() {
   try {
     const redirectUri = Linking.createURL('/');
     
-    const authUrl = account.createOAuth2Token(OAuthProvider.Google);
+    const authUrl = account.createOAuth2Token(OAuthProvider.Google, redirectUri);
     if (!authUrl) throw new Error('Failed to create oauth2 url');
     
     const browserSession = await openAuthSessionAsync(authUrl.toString(), redirectUri);
@@ -56,18 +56,21 @@ export async function logout() {
   }
 }
 
-export async function getUser() {
+export async function getCurrentUser() {
   try {
-    const response = await account.get();
-    if (!response || !response.$id) throw new Error('Failed to get user');
-    
-    const userAvatar = avatar.getInitials(response.name);
-    return {
-      ...response,
-      avatar: userAvatar.toString()
+    const result = await account.get();
+    if (result.$id) {
+      const userAvatar = avatar.getInitials(result.name);
+      
+      return {
+        ...result,
+        avatar: userAvatar.toString(),
+      };
     }
+    
+    return null;
   } catch (error) {
     console.error(error);
-    return false;
+    return null;
   }
 }
