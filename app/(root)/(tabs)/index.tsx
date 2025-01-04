@@ -46,7 +46,7 @@ const Home = () => {
               </Text>
             </TouchableOpacity>
           </View>
-          <View className={"flex flex-row gap-5 my-3"}>
+          <View className={"flex flex-row gap-5 my-2"}>
             <Card />
             <Card />
           </View>
