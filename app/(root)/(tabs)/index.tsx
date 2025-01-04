@@ -6,6 +6,7 @@ import images from "@/constants/images";
 import icons from "@/constants/icons";
 import Search from "@/components/Search";
 import {Card, FeaturedCard} from "@/components/Cards";
+import Filters from "@/components/Filters";
 
 const Home = () => {
   const { user } = useGlobalContext();
@@ -46,6 +47,7 @@ const Home = () => {
               </Text>
             </TouchableOpacity>
           </View>
+          <Filters />
           <View className={"flex flex-row gap-5 my-2"}>
             <Card />
             <Card />
