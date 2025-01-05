@@ -1,4 +1,4 @@
-import {View, Text, Image, TouchableOpacity, ScrollView, FlatList} from 'react-native'
+import {View, Text, Image, TouchableOpacity, ScrollView, FlatList, Button} from 'react-native'
 import React from 'react'
 import {SafeAreaView} from "react-native-safe-area-context";
 import {useGlobalContext} from "@/lib/global-provider";
@@ -7,6 +7,7 @@ import icons from "@/constants/icons";
 import Search from "@/components/Search";
 import {Card, FeaturedCard} from "@/components/Cards";
 import Filters from "@/components/Filters";
+import seed from "@/lib/seed";
 
 const Home = () => {
   const { user } = useGlobalContext();
